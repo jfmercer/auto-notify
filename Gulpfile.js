@@ -2,9 +2,11 @@ var gulp = require('gulp');
 var phpspec = require('gulp-phpspec');
 var run = require('gulp-run');
 var notify = require('gulp-notify');
+var plumber = require('gulp-plumber');
 
 gulp.task('test', function() {
    gulp.src('spec/**/*.php')
+       .pipe(plumber())
        .pipe(run('clear').exec())
        .pipe(phpspec('', { notify: true }))
        .on('error', notify.onError({
