@@ -7,8 +7,7 @@ var plumber = require('gulp-plumber');
 gulp.task('test', function() {
    gulp.src('spec/**/*.php')
        .pipe(plumber())
-       .pipe(run('clear').exec())
-       .pipe(phpspec('', { notify: true }))
+       .pipe(phpspec('', { clear:true, notify: true }))
        .on('error', notify.onError({
            title: 'Dangit',
            message: 'Your tests failed!',
